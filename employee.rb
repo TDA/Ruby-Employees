@@ -22,7 +22,11 @@ class Employee
   def print_pay_stub
     puts "Name : #{@name}"
     @pay_per_period = (@salary.to_f / 365) * 14
-    puts "Salary : #{@pay_per_period}"
+    formatted_pay_stub = format("%0.2f", @pay_per_period)
+    # looks equivalent :D
+    puts "Salary : #{formatted_pay_stub}"
+    puts format("Salary : %0.2f", @pay_per_period)
+    printf("Salary : %0.2f\n", @pay_per_period)
   end
 end
 
