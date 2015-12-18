@@ -1,13 +1,12 @@
 class Employee
-  # needs name and salary
-  attr_accessor :name, :salary
+  # needs name
+  attr_reader :name
 
-  def initialize(name = "Jane Doe", salary = 0.0)
+  def initialize(name = "Jane Doe")
     puts "New employee created"
     # call the accessors from here :D
     # no need to repeat validation
     self.name = name
-    self.salary = salary.to_f
   end
 
   def name=(name)
@@ -19,35 +18,13 @@ class Employee
     end
   end
 
-  def salary=(salary)
-    if salary == nil or salary < 0
-      raise "Salary cant be #{salary} mister"
-    else
-      # convert to float
-      @salary = salary.to_f
-    end
+  def print_name
+    puts "Name : #{@name}"
   end
 
-  def print_pay_stub
-    # could omit the @ here, by default methods are checked first in self
-    # NOTE: calling name or salary is a method! not a variable!
-    puts "Name : #{@name}"
-    @pay_per_period = (@salary / 365) * 14
-    formatted_pay_stub = format("%0.2f", @pay_per_period)
-    # looks equivalent :D
-    puts "Salary : #{formatted_pay_stub}"
-    puts format("Salary : %0.2f", @pay_per_period)
-    printf("Salary : %0.2f\n", @pay_per_period)
-  end
 end
 
-emp1 = Employee.new
-emp1.name = "Sarah"
-emp1.salary = 100000
-puts emp1.print_pay_stub
-
-emp2 = Employee.new("Sai", 100000)
-puts emp2.print_pay_stub
-
-emp3 = Employee.new("", -100000)
-puts emp3.print_pay_stub
+#emp1 = Employee.new
+#emp1.name = "Sarah"
+#emp1.salary = 100000
+#puts emp1.print_pay_stub
