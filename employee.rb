@@ -2,6 +2,12 @@ class Employee
   # needs name and salary
   attr_accessor :name, :salary
 
+  def initialize
+    puts "New employee created"
+    @salary = 0
+    @name = "Jane Doe"
+  end
+
   def name=(name)
     if name == ""
       raise "Name cant be empty mister"
@@ -12,7 +18,7 @@ class Employee
   end
 
   def salary=(salary)
-    if !salary or salary < 0
+    if salary == nil or salary < 0
       raise "Salary cant be #{salary} mister"
     else
       @salary = salary
