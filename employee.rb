@@ -2,10 +2,10 @@ class Employee
   # needs name and salary
   attr_accessor :name, :salary
 
-  def initialize
+  def initialize(name = "Jane Doe", salary = 0.0)
     puts "New employee created"
-    @salary = 0
-    @name = "Jane Doe"
+    @name = name
+    @salary = salary.to_f
   end
 
   def name=(name)
@@ -21,13 +21,14 @@ class Employee
     if salary == nil or salary < 0
       raise "Salary cant be #{salary} mister"
     else
-      @salary = salary
+      # convert to float
+      @salary = salary.to_f
     end
   end
 
   def print_pay_stub
     puts "Name : #{@name}"
-    @pay_per_period = (@salary.to_f / 365) * 14
+    @pay_per_period = (@salary / 365) * 14
     formatted_pay_stub = format("%0.2f", @pay_per_period)
     # looks equivalent :D
     puts "Salary : #{formatted_pay_stub}"
@@ -41,5 +42,5 @@ emp1.name = "Sarah"
 emp1.salary = 100000
 puts emp1.print_pay_stub
 
-emp2 = Employee.new
+emp2 = Employee.new("Sai", 100000)
 puts emp2.print_pay_stub
