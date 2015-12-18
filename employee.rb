@@ -4,8 +4,10 @@ class Employee
 
   def initialize(name = "Jane Doe", salary = 0.0)
     puts "New employee created"
-    @name = name
-    @salary = salary.to_f
+    # call the accessors from here :D
+    # no need to repeat validation
+    self.name = name
+    self.salary = salary.to_f
   end
 
   def name=(name)
@@ -27,6 +29,8 @@ class Employee
   end
 
   def print_pay_stub
+    # could omit the @ here, by default methods are checked first in self
+    # NOTE: calling name or salary is a method! not a variable!
     puts "Name : #{@name}"
     @pay_per_period = (@salary / 365) * 14
     formatted_pay_stub = format("%0.2f", @pay_per_period)
@@ -44,3 +48,6 @@ puts emp1.print_pay_stub
 
 emp2 = Employee.new("Sai", 100000)
 puts emp2.print_pay_stub
+
+emp3 = Employee.new("", -100000)
+puts emp3.print_pay_stub
