@@ -21,12 +21,33 @@ class HourlyEmployee < Employee
     end
   end
 
+  def hours_worked=(hours_worked)
+    if hours_worked == nil or hours_worked < 0
+      raise "Hours cant be #{hours_worked} mister"
+    else
+      # convert to float
+      @hours_worked = hours_worked.to_f
+    end
+  end
 
   def print_pay_stub
     # inherited
     print_name
     @pay_per_period = (@wages * @hours_worked) * 2
     printf("Salary : %0.2f\n", @pay_per_period)
+  end
+
+  # lets create some factory methods
+  def self.cashier(name)
+    return HourlyEmployee.new(name, 10.0, 40.0)
+  end
+
+  def self.clerk(name)
+    return HourlyEmployee.new(name, 12.0, 20.0)
+  end
+
+  def self.intern(name)
+    return HourlyEmployee.new(name, 18.0, 20.0)
   end
 
 end
