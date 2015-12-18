@@ -37,6 +37,3 @@ class SalariedEmployee < Employee
   end
 
 end
-
-emp2 = SalariedEmployee.new("Sai", 100000)
-puts emp2.print_pay_stub

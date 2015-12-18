@@ -12,7 +12,6 @@ class HourlyEmployee < Employee
     self.hours_worked = hours_worked
   end
 
-
   def wages=(wages)
     if wages == nil or wages < 0
       raise "Salary cant be #{wages} mister"
@@ -31,6 +30,3 @@ class HourlyEmployee < Employee
   end
 
 end
-
-emp2 = HourlyEmployee.new("Sai", 21, 20)
-puts emp2.print_pay_stub
